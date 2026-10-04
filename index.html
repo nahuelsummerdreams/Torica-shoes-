@@ -491,6 +491,47 @@ button.link-u{background:none;border-top:0;border-left:0;border-right:0;cursor:p
   .agent-btn .lbl{display:none}.agent-btn{padding:0 16px;width:54px;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){.ag-m,.agent-btn .spark,.ag-m.typing i,.agent-nudge{animation:none}}
+
+/* ===== Hero con muro de fotos ===== */
+.hero-wall{position:relative;min-height:min(94vh,940px);background:var(--chicle);overflow:hidden;display:flex;align-items:center}
+.wall{position:absolute;left:-6%;right:-6%;top:-12%;bottom:-12%;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;transform:rotate(-5deg)}
+.wcol{overflow:hidden;opacity:0;animation:wIn 1.4s cubic-bezier(.2,.7,.1,1) forwards}
+.wcol:nth-child(2){animation-delay:.15s}.wcol:nth-child(3){animation-delay:.3s}.wcol:nth-child(4){animation-delay:.45s}
+@keyframes wIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.wtrack{animation:wUp 70s linear infinite;will-change:transform}
+.wcol:nth-child(even) .wtrack{animation-name:wDown;animation-duration:85s}
+.wcol:nth-child(3) .wtrack{animation-duration:58s}
+.wcol:nth-child(2) .wtrack{margin-top:-120px}.wcol:nth-child(4) .wtrack{margin-top:-60px}
+@keyframes wUp{to{transform:translateY(-50%)}}
+@keyframes wDown{from{transform:translateY(-50%)}to{transform:none}}
+.wtrack img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px;display:block;margin-bottom:14px}
+.wall-veil{position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(255,200,240,.97) 0%,rgba(255,200,240,.93) 32%,rgba(255,200,240,.6) 56%,rgba(255,200,240,.08) 100%),
+  radial-gradient(120% 90% at 0% 50%,rgba(255,200,240,.55),transparent 70%)}
+.hw-in{position:relative;z-index:2;padding:96px var(--pad);display:flex;flex-direction:column;gap:26px;width:min(820px,100%)}
+.hw-in h1{color:var(--terracota);font-size:clamp(56px,7.6vw,128px);text-shadow:0 0 50px rgba(255,200,240,.9)}
+.hw-in p{margin:0;font-size:19px;max-width:420px}
+.hw-chip{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;background:rgba(255,248,243,.92);backdrop-filter:blur(12px);border-radius:999px;padding:8px 18px 8px 8px;box-shadow:0 16px 40px rgba(42,15,10,.2);font-size:13.5px;font-weight:500;max-width:290px;animation:floaty 6s ease-in-out infinite;transition:background .25s}
+.hw-chip:hover{background:var(--crema)}
+.hw-chip img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.hw-chip span{display:flex;flex-direction:column;line-height:1.25}
+.hw-chip small{font-size:9.5px;letter-spacing:2.5px;font-weight:700;color:var(--terracota)}
+.hw-chip b{color:var(--terracota)}
+.hw-chip.c1{right:7%;top:20%}.hw-chip.c2{right:14%;bottom:18%;animation-delay:-3s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.scroll-cue{position:absolute;z-index:3;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:4px;font-weight:700;text-transform:uppercase;color:var(--cacao)}
+.scroll-cue i{width:1.5px;height:34px;background:var(--cacao);transform-origin:top;animation:cue 2s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@media (max-width:900px){
+  .hero-wall{min-height:86vh;align-items:flex-end}
+  .wall{grid-template-columns:repeat(3,1fr);gap:10px;left:-10%;right:-10%}
+  .wcol:nth-child(4){display:none}
+  .wall-veil{background:linear-gradient(180deg,rgba(255,200,240,.55) 0%,rgba(255,200,240,.78) 38%,rgba(255,200,240,.95) 100%)}
+  .hw-in{padding:64px var(--pad) 84px}
+  .hw-chip,.scroll-cue,.hero-wall .tw.d2{display:none}
+}
+@media (max-width:1100px) and (min-width:901px){.hw-chip.c2{display:none}}
+@media (prefers-reduced-motion:reduce){.wcol{opacity:1;animation:none}.wtrack,.hw-chip,.scroll-cue i{animation:none}}
 </style>
 </head>
 <body>
@@ -676,6 +717,7 @@ const PRODUCTS = [
   P("m02","mochila","Riñonera negra","r_negra","negro")
 ];
 const REVIEWS = [];   // Pegá reseñas reales: {t:"texto", n:"Nombre", c:"Ciudad"}. Si está vacío, la sección no se muestra.
+const WALL = [["l_sand","b_flecos","s_leo","z_vaca"],["l_beige","s_plat","b_texana","c_charol"],["l_cama","s_taco","z_tachas","s_strass"],["s_hebillas","b_suede","s_cruzada","c_gris"]];
 const NEW_IDS = ["z01","b02","c03","s05","c05","b04","s04","m01"];     // orden de "Lo nuevo"
 const IG_KEYS = ["b_texana","c_charol","s_leo","z_vaca","c_negro","s_strass","m_negra","b_flecos"];
 const CAT_LABEL = {bota:"Botas",sandalia:"Sandalias",zapato:"Zapatos",cartera:"Carteras",mochila:"Mochilas"};
@@ -790,20 +832,23 @@ function viewHome(){
   const nuevo = NEW_IDS.map(byId);
   const mq = ["Envíos a todo el país","Zona oeste","Stock en historias destacadas","Nuevo cada semana","Torica Shoes"].map(t=>`<span>${t}${spark("var(--chicle)")}</span>`).join("");
   return `
-  <section class="hero-split">
-    <div class="hs-text">
+  <section class="hero-wall" aria-label="Torica Shoes">
+    <div class="wall" aria-hidden="true">
+      ${WALL.map(c=>`<div class="wcol"><div class="wtrack">${[...c,...c].map(k=>`<img src="${IMG[k]}" alt="">`).join("")}</div></div>`).join("")}
+    </div>
+    <div class="wall-veil"></div>
+    <div class="hw-in">
       <div class="eyebrow">Zapatos · Carteras · Accesorios</div>
       <h1 class="h-xl"><span class="ln"><span>Elegí caminar</span></span><span class="ln"><span>con estilo.</span></span></h1>
       <p>Comodidad y confianza en cada paso. Envíos a todo el país.</p>
-      <div class="row" style="gap:12px"><a class="btn btn-terra mag" href="#/coleccion">Ver lo nuevo</a><a class="btn btn-line mag" href="${wa("¡Hola Torica! Quería hacerles una consulta.")}" target="_blank" rel="noopener">Escribinos</a></div>
+      <div class="row" style="gap:12px"><a class="btn btn-terra mag" href="#/coleccion">Ver lo nuevo</a><a class="btn btn-crema mag" href="${wa("¡Hola Torica! Quería hacerles una consulta.")}" target="_blank" rel="noopener">Escribinos</a></div>
     </div>
-    <div class="hs-media">
-      <div class="ph" data-par="0.05"><img src="${IMG.l_sand}" alt="Clogs plataforma Torica"></div>
-      <div class="ph" data-par="-0.05"><img src="${IMG.l_beige}" alt="Botas beige Torica"></div>
-      <span class="tw" style="left:-14px;top:16%;font-size:34px">${spark("var(--terracota)")}</span>
-      <span class="tw d2" style="right:8%;top:5%;font-size:26px">${spark("var(--pop)")}</span>
-      <span class="tw d3" style="left:46%;bottom:7%;font-size:22px">${spark("var(--terracota)")}</span>
-    </div>
+    <a class="hw-chip c1" href="#/producto/z01"><img src="${IMG.z_vaca}" alt=""><span><small>NUEVO</small>Clog plataforma print vaca</span><b>→</b></a>
+    <a class="hw-chip c2" href="#/producto/b02"><img src="${IMG.b_texana}" alt=""><span><small>NUEVO</small>Botas texanas con tachas</span><b>→</b></a>
+    <span class="tw" style="left:44%;top:14%;font-size:30px">${spark("var(--terracota)")}</span>
+    <span class="tw d2" style="left:6%;bottom:12%;font-size:24px">${spark("var(--pop)")}</span>
+    <span class="tw d3" style="right:5%;top:10%;font-size:26px">${spark("var(--crema)")}</span>
+    <a class="scroll-cue" href="#/coleccion" aria-label="Ver la colección"><i></i>Descubrí</a>
   </section>
   <div class="marquee" aria-hidden="true"><div class="track">${mq}${mq}</div></div>
   <section class="section" style="padding-right:0">
