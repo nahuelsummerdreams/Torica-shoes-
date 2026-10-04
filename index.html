@@ -442,6 +442,55 @@ button.link-u{background:none;border-top:0;border-left:0;border-right:0;cursor:p
 .to-top.on{opacity:1;pointer-events:auto}
 @media (max-width:900px){.to-top{bottom:calc(86px + env(safe-area-inset-bottom,0px))}}
 @media (prefers-reduced-motion:reduce){.fav.pop{animation:none}}
+/* ===== Tori: asistente ===== */
+.agent-btn{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:130;height:54px;padding:0 22px 0 16px;border-radius:999px;border:0;background:var(--cacao);color:var(--crema);display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 30px rgba(42,15,10,.28);transition:transform .25s,background .25s}
+.agent-btn:hover{background:var(--terracota);transform:translateY(-3px)}
+.agent-btn .spark{width:20px;height:20px;color:var(--chicle);animation:tw 3.4s ease-in-out infinite}
+.agent-nudge{position:fixed;right:18px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:130;max-width:240px;background:var(--crema);border:1.5px solid var(--cacao);border-radius:18px 18px 4px 18px;padding:12px 16px;font-size:14px;font-weight:500;text-align:left;cursor:pointer;box-shadow:0 10px 30px rgba(42,15,10,.18);animation:pageIn .5s both}
+.agent{position:fixed;right:18px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:140;width:380px;height:min(600px,calc(100vh - 110px));background:var(--crema);border:1px solid var(--linea);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 70px rgba(42,15,10,.28);opacity:0;visibility:hidden;transform:translateY(16px) scale(.98);transition:opacity .3s,transform .3s,visibility 0s .3s}
+.agent.on{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .3s}
+.agent header{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 18px;background:var(--chicle);border-bottom:1px solid var(--linea)}
+.agent .av{width:40px;height:40px;border-radius:50%;background:var(--terracota);color:var(--crema);display:grid;place-items:center;flex-shrink:0}
+.agent .av .spark{width:20px;height:20px}
+.agent header div:nth-child(2){flex:1;display:flex;flex-direction:column;line-height:1.2}
+.agent header b{font-family:var(--serif);font-size:24px;font-weight:400}
+.agent header small{font-size:11px;letter-spacing:1.5px;font-weight:500}
+.ag-log{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.ag-log>*{flex-shrink:0}
+.ag-m{max-width:86%;padding:11px 15px;border-radius:16px;font-size:14.5px;line-height:1.5;animation:pageIn .35s both}
+.ag-m.bot{background:var(--suave);border-bottom-left-radius:4px;align-self:flex-start}
+.ag-m.me{background:var(--cacao);color:var(--crema);border-bottom-right-radius:4px;align-self:flex-end}
+.ag-m.typing{display:flex;gap:5px;padding:14px 16px}
+.ag-m.typing i{width:7px;height:7px;border-radius:50%;background:var(--terracota);animation:dot 1s infinite}
+.ag-m.typing i:nth-child(2){animation-delay:.15s}.ag-m.typing i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,60%,100%{transform:none;opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+.ag-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.ag-chip{border:1.5px solid var(--cacao);background:transparent;border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:500;cursor:pointer;transition:background .2s,color .2s}
+.ag-chip:hover{background:var(--cacao);color:var(--crema)}
+.ag-prods{display:flex;flex-direction:column;gap:10px}
+.ag-p{display:flex;gap:12px;background:var(--crema);border:1px solid var(--linea);border-radius:10px;padding:8px}
+.ag-p img{width:64px;height:80px;object-fit:cover;border-radius:6px;flex-shrink:0}
+.ag-p>div{display:flex;flex-direction:column;gap:2px;font-size:14px;min-width:0}
+.ag-p span{color:#6B4A40;font-size:13px}
+.ag-pa{display:flex;gap:14px;margin-top:auto;align-items:center}
+.ag-pa a{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-bottom:1.5px solid var(--cacao)}
+.ag-pa button{border:0;background:var(--terracota);color:var(--crema);border-radius:999px;padding:7px 14px;font-size:11px;font-weight:700;letter-spacing:1.5px;cursor:pointer}
+.ag-pa button:hover{background:var(--cacao)}
+.ag-wa{align-self:flex-start;height:44px;font-size:11px}
+.ag-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--linea)}
+.ag-form input{flex:1;min-width:0;height:46px;border-radius:999px;border:1.5px solid var(--cacao);background:var(--crema);padding:0 18px;font-size:16px;font-family:var(--sans);color:var(--cacao)}
+.ag-form button{width:46px;height:46px;border-radius:50%;border:0;background:var(--terracota);color:var(--crema);font-size:18px;cursor:pointer}
+.ag-form button:hover{background:var(--cacao)}
+.wa-float{width:46px;height:46px;bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.wa-float svg{width:24px;height:24px}
+@media (max-width:900px){
+  .agent{right:0;left:0;bottom:0;width:100%;height:min(88vh,680px);border-radius:16px 16px 0 0}
+  .agent-btn.has-sticky{bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+  .agent-nudge.has-sticky,.agent-nudge{bottom:calc(152px + env(safe-area-inset-bottom,0px))}
+  .wa-float.has-sticky{bottom:calc(152px + env(safe-area-inset-bottom,0px))}
+  .agent-btn .lbl{display:none}.agent-btn{padding:0 16px;width:54px;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.ag-m,.agent-btn .spark,.ag-m.typing i,.agent-nudge{animation:none}}
 </style>
 </head>
 <body>
@@ -481,6 +530,13 @@ button.link-u{background:none;border-top:0;border-left:0;border-right:0;cursor:p
   <div class="search-box" role="dialog" aria-label="Buscar"><div class="s-top"><input id="sInput" type="search" placeholder="Buscá botas, carteras, strass…" autocomplete="off" aria-label="Buscar productos"><button class="icon-btn" data-act="close-search" aria-label="Cerrar buscador"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
   <div class="s-hint" id="sHint"></div><div class="s-res" id="sRes"></div></div></div>
 <div class="panel" id="qv" aria-hidden="true"><div class="bd" data-act="qv-close"></div><div class="qv-box" role="dialog" aria-label="Vista rápida" id="qvBox"></div></div>
+<button class="agent-btn" id="agentBtn" aria-label="Hablar con Tori, la asistente de Torica" aria-expanded="false" aria-controls="agent"><svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C12.8 7.2 16.8 11.2 24 12C16.8 12.8 12.8 16.8 12 24C11.2 16.8 7.2 12.8 0 12C7.2 11.2 11.2 7.2 12 0Z" fill="currentColor"/></svg><span class="lbl">Hablá con Tori</span></button>
+<button class="agent-nudge" id="agentNudge" data-act="ag-open-nudge" hidden></button>
+<section class="agent" id="agent" role="dialog" aria-label="Chat con Tori, asistente virtual" aria-hidden="true">
+  <header><div class="av"><svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C12.8 7.2 16.8 11.2 24 12C16.8 12.8 12.8 16.8 12 24C11.2 16.8 7.2 12.8 0 12C7.2 11.2 11.2 7.2 12 0Z" fill="currentColor"/></svg></div><div><b>Tori</b><small>Asistente virtual de Torica</small></div><button class="icon-btn" data-act="ag-close" aria-label="Cerrar chat"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button></header>
+  <div class="ag-log" id="agLog" role="log" aria-live="polite"></div>
+  <form class="ag-form" id="agForm"><input id="agIn" type="text" placeholder="Escribí tu consulta…" autocomplete="off" aria-label="Tu mensaje" maxlength="200"><button type="submit" aria-label="Enviar">→</button></form>
+</section>
 <button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>
 <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a>
 <div class="sticky-buy" id="stickyBuy" hidden><div class="sp"><b id="sbName"></b><span id="sbPrice"></span></div><button class="btn btn-terra" id="sbAdd" data-act="add">Agregar</button></div>
@@ -578,7 +634,9 @@ const CONFIG = {
   tiktok: "#",                        // ej: "https://tiktok.com/@torica"
   anuncio: "Envíos a todo el país · Zona oeste · Stock en historias destacadas",
   moneda: "$",
-  talles: ["35","36","37","38","39","40"]   // talles que ofrecés en calzado
+  talles: ["35","36","37","38","39","40"],  // talles que ofrecés en calzado
+  /* Info que Tori usa para responder. Dejá "" y Tori deriva la consulta a WhatsApp. */
+  info: { envios:"", pagos:"", cambios:"", horarios:"" }
 };
 
 /* =========================================================
@@ -707,7 +765,7 @@ function renderCart(){
   $("#checkout").href = wa("¡Hola Torica! Quiero hacer este pedido:\n"+lines);
   $("#checkout").onclick = e => { if(!CONFIG.whatsapp){ e.preventDefault(); toast("Falta cargar el WhatsApp en CONFIG"); } };
 }
-function openCart(open){
+function openCart(open){ if(open) closeAgent();
   $("#drawer").classList.toggle("on",open); $("#overlay").classList.toggle("on",open);
   $("#drawer").setAttribute("aria-hidden",String(!open));
 }
@@ -977,7 +1035,7 @@ function route(){
   main.innerHTML = html; document.title = title; main.classList.add("enter");
   $$("#navLinks a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")===("#"+raw)));
   $("#navLinks").classList.remove("open"); $("#burger").setAttribute("aria-expanded","false");
-  bindReveal(); bindWa(); parallax(); syncExtras();
+  bindReveal(); bindWa(); parallax(); syncExtras(); agContext(parts);
   window.scrollTo({top:0,behavior:"instant"});
 }
 function rerenderPdp(){ const y=window.scrollY; main.innerHTML=viewProducto(window.__pdp); bindReveal(); bindWa(); window.scrollTo(0,y); }
@@ -1033,9 +1091,123 @@ function syncExtras(){
   const f=$("#waFloat"), s=$("#stickyBuy"), p=window.__pdp?byId(window.__pdp):null;
   f.href = wa("¡Hola Torica! Quería hacerles una consulta.");
   f.onclick = e=>{ if(!CONFIG.whatsapp){ e.preventDefault(); toast("Falta cargar el WhatsApp en CONFIG"); } };
-  s.hidden = !p; f.classList.toggle("has-sticky",!!p);
+  s.hidden = !p; f.classList.toggle("has-sticky",!!p); $("#agentBtn").classList.toggle("has-sticky",!!p);
   if(p){ $("#sbName").textContent=p.name; $("#sbPrice").textContent=money(p.price); $("#sbAdd").dataset.id=p.id; }
 }
+/* ---------- Tori · asistente virtual ----------
+   Funciona sin servidor. Para respuestas más precisas completá CONFIG.info (envíos, pagos, cambios, horarios). */
+const AGK="torica_chat";
+let agLog=[]; try{ agLog=JSON.parse(sessionStorage.getItem(AGK)||"[]"); }catch(e){}
+let agTyping=false, nudgeT;
+const agSave=()=>{ try{ sessionStorage.setItem(AGK,JSON.stringify(agLog.slice(-40))); }catch(e){} };
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const AG_MAIN=[["Encontrar mi par ideal","buscar"],["¿Qué talle elijo?","q:talles"],["Envíos","q:envíos"],["Pagos y cuotas","q:medios de pago"],["Cambios","q:cambios"],["Hablar con el equipo","wa"]];
+const AG_AFTER=[["Ver modelos","buscar"],["Más ayuda","menu"]];
+const LOUD=/tacha|cadena|flec|strass|leopardo|vaca|plataforma|charol|ojales/i;
+const AG_EXTRA={bota:"bota botas",sandalia:"sandalia sandalias slide slingback taco",zapato:"zapato zapatos clog clogs plataforma",cartera:"cartera carteras bolso bolsos tote bandolera",mochila:"mochila mochilas rinonera"};
+const AG_SYN={brillo:"strass",brillos:"strass",animal:"leopardo",vacuno:"vaca"};
+const AG_STOP=new Set("quiero busco algo para con una unas unos los las que hay tienen modelo modelos como cual cuales tengo necesito ver mostrame muestrame me gustaria por favor del esta este estos esas son tiene".split(" "));
+const agSearchText=p=>norm(p.name+" "+CAT_LABEL[p.cat]+" "+AG_EXTRA[p.cat]+" "+p.colors.map(c=>COLOR[c[0]].n).join(" "));
+function agSearch(q){
+  const toks=q.split(/[^a-z0-9]+/).filter(t=>t.length>=3&&!AG_STOP.has(t)).map(t=>AG_SYN[t]||t).map(t=>{ t=t.replace(/s$/,""); return t.length>4?t.slice(0,-1):t; });
+  if(!toks.length) return [];
+  return PRODUCTS.map(p=>{ const h=agSearchText(p); return {p,s:toks.filter(t=>h.includes(t)).length}; }).filter(x=>x.s>0).sort((a,b)=>b.s-a.s).slice(0,3).map(x=>x.p.id);
+}
+function agWaLink(){
+  const me=agLog.filter(m=>m.r==="me").slice(-3).map(m=>m.t), p=window.__pdp?byId(window.__pdp):null;
+  const lines=cart.map(i=>{const x=byId(i.id);return `• ${x.name}${i.s?" (talle "+i.s+")":""} x${i.q}`}).join("\n");
+  let msg="¡Hola Torica! Vengo de la web y hablé con Tori.";
+  if(me.length) msg+="\nMi consulta: "+me.join(" / ");
+  if(p) msg+="\nEstoy mirando: "+p.name;
+  if(lines) msg+="\nMi carrito:\n"+lines;
+  return wa(msg);
+}
+function agProd(id){
+  const p=byId(id), shoe=SHOES.includes(p.cat);
+  return `<div class="ag-p"><img src="${IMG[p.colors[0][1]]}" alt=""><div><b style="font-weight:500">${p.name}</b><span>${money(p.price)}</span><div class="ag-pa"><a href="#/producto/${p.id}" data-act="ag-close">Ver</a><button data-act="${shoe?"qv":"quick"}" data-id="${p.id}">${shoe?"Elegir talle":"Agregar"}</button></div></div></div>`;
+}
+function agRender(){
+  const log=$("#agLog");
+  log.innerHTML=agLog.map((m,i)=>{
+    if(m.r==="me") return `<div class="ag-m me">${esc(m.t)}</div>`;
+    return `<div class="ag-m bot">${m.t}</div>`
+      +(m.prods?`<div class="ag-prods">${m.prods.map(agProd).join("")}</div>`:"")
+      +(m.wa?`<a class="btn btn-terra ag-wa" href="${agWaLink()}" target="_blank" rel="noopener">Abrir WhatsApp</a>`:"")
+      +(i===agLog.length-1&&!agTyping&&m.chips?`<div class="ag-chips">${m.chips.map(c=>`<button class="ag-chip" data-act="ag-chip" data-k="${esc(c[1])}">${esc(c[0])}</button>`).join("")}</div>`:"");
+  }).join("")+(agTyping?`<div class="ag-m bot typing" aria-label="Tori está escribiendo"><i></i><i></i><i></i></div>`:"");
+  log.scrollTop=log.scrollHeight;
+}
+function agSay(m,delay=650){
+  agTyping=true; agRender();
+  setTimeout(()=>{ agTyping=false; agLog.push({r:"bot",...m}); agSave(); agRender(); },reduce?0:delay);
+}
+function agUser(t){ agLog.push({r:"me",t}); agSave(); agRender(); agReply(t); }
+function agWelcome(){
+  const p=window.__pdp?byId(window.__pdp):null;
+  if(p){ const shoe=SHOES.includes(p.cat);
+    agSay({t:`Hola, soy <b>Tori</b>, la asistente de Torica. Veo que estás mirando <b>${p.name}</b>. ¿Te ayudo?`,chips:[[shoe?"¿Qué talle me conviene?":"¿Con qué lo combino?",shoe?"q:talles":"q:combinar"],["Consultar stock de este modelo","q:stock "+p.name],["Hablar con el equipo","wa"],["Otra consulta","menu"]]},400);
+  } else agSay({t:"Hola, soy <b>Tori</b>, la asistente virtual de Torica. Te ayudo a encontrar tu par ideal, resolver dudas de talles y envíos, o conectarte con el equipo.",chips:AG_MAIN},400);
+}
+function agPicks(cat,style){
+  let l=PRODUCTS.filter(p=>p.cat===cat);
+  if(style==="c") l=[...l].sort((a,b)=>LOUD.test(a.name)-LOUD.test(b.name));
+  else if(style==="l") l=[...l].sort((a,b)=>LOUD.test(b.name)-LOUD.test(a.name));
+  else l=[...l].sort(()=>Math.random()-.5);
+  return l.slice(0,3).map(p=>p.id);
+}
+function agChip(k,label){
+  const [a,b,c]=k.split(":");
+  if(k==="menu"){ return agSay({t:"¿En qué más te ayudo?",chips:AG_MAIN},400); }
+  if(k==="wa"){ agLog.push({r:"me",t:"Quiero hablar con el equipo"}); agSave(); return agSay({t:"Claro, te paso con el equipo de Torica. Les llega tu consulta, lo que miraste y tu carrito, así no repetís nada.",wa:true,chips:[["Volver al inicio","menu"]]}); }
+  if(k==="buscar"){ agLog.push({r:"me",t:"Quiero encontrar mi par ideal"}); agSave(); return agSay({t:"¡Dale! ¿Qué estás buscando?",chips:[["Botas","cat:bota"],["Sandalias","cat:sandalia"],["Zapatos / clogs","cat:zapato"],["Carteras","cat:cartera"],["Mochilas","cat:mochila"]]},450); }
+  if(a==="cat"){ agLog.push({r:"me",t:label}); agSave(); return agSay({t:"¿Con qué onda?",chips:[["Cómoda y clásica","sty:"+b+":c"],["Llamativa, con carácter","sty:"+b+":l"],["Sorprendeme","sty:"+b+":s"]]},450); }
+  if(a==="sty"){ agLog.push({r:"me",t:label}); agSave(); return agSay({t:"Estas son las que mejor van con eso:",prods:agPicks(b,c),chips:[["Ver toda la categoría","go:"+b],["Probar otra cosa","buscar"],["Hablar con el equipo","wa"]]},800); }
+  if(a==="go"){ closeAgent(); location.hash = b==="girls" ? "#/girls" : "#/coleccion?cat="+b; return; }
+  if(a==="q"){ return agUser(k.slice(2)==="talles"?"¿Qué talle elijo?":k.slice(2)); }
+}
+function agReply(text){
+  const q=norm(text), has=r=>r.test(q), info=CONFIG.info||{};
+  const last=CONFIG.talles[CONFIG.talles.length-1], first=CONFIG.talles[0];
+  const p=window.__pdp?byId(window.__pdp):null;
+  if(has(/persona|humano|asesor|vendedora|whatsapp|hablar con|contacto|llamar/)) return agSay({t:"Claro, te paso con el equipo de Torica. Les llega tu consulta, lo que miraste y tu carrito.",wa:true,chips:[["Volver al inicio","menu"]]});
+  if(has(/envi|entrega|correo|andreani|demora|llega|costo de/)) return agSay({t:info.envios||"Hacemos <b>envíos a todo el país</b> y también a zona oeste. Los plazos y costos dependen de tu ciudad: el equipo te los confirma por WhatsApp.",wa:!info.envios,chips:AG_AFTER});
+  if(has(/pago|cuota|tarjeta|transfer|efectivo|mercado|descuento/)) return agSay({t:info.pagos||"Los medios de pago y las cuotas disponibles te los confirma el equipo por WhatsApp, según el modelo que elijas.",wa:!info.pagos,chips:AG_AFTER});
+  if(has(/cambio|devol|garantia|arrepent|no me queda/)) return agSay({t:info.cambios||"Escribinos por WhatsApp y el equipo te cuenta cómo gestionar tu cambio.",wa:!info.cambios,chips:AG_AFTER});
+  if(has(/horario|abierto|atienden|a que hora/)) return agSay({t:info.horarios||"Los horarios de atención te los confirma el equipo por WhatsApp. Y si me escribís ahora, tu mensaje queda listo para cuando respondan.",wa:!info.horarios,chips:AG_AFTER});
+  if(has(/girls|comunidad|preventa|votacion/)) return agSay({t:"<b>Torica Girls</b> es nuestra comunidad: tenés preventas, votás qué modelos llegan, probás primero y podés aparecer en el feed.",chips:[["Conocer Torica Girls","go:girls"],["Más ayuda","menu"]]});
+  if(has(/talle|medida|numero|calza|\bpie\b/)){
+    const extra=p&&SHOES.includes(p.cat)?` Para <b>${p.name}</b> podés elegir tu talle en la ficha.`:"";
+    return agSay({t:`En calzado trabajamos <b>talles ${first} al ${last}</b>. Si dudás entre dos, pasanos la medida de tu pie en centímetros y el equipo te asesora por WhatsApp.${extra}`,wa:true,chips:AG_AFTER});
+  }
+  if(has(/combin|outfit|look|armar/)){
+    const pool=p&&SHOES.includes(p.cat)?PRODUCTS.filter(x=>x.cat==="cartera"||x.cat==="mochila"):PRODUCTS.filter(x=>SHOES.includes(x.cat));
+    const pick=pool.filter(x=>LOUD.test(x.name)===(p?!LOUD.test(p.name):false)).concat(pool).filter((x,i,a)=>a.indexOf(x)===i).slice(0,3).map(x=>x.id);
+    return agSay({t:p?`Para combinar con <b>${p.name}</b> te sugiero estas piezas, pensadas para equilibrar el look:`:"Te muestro algunas piezas que se llevan con todo:",prods:pick,chips:AG_AFTER},800);
+  }
+  if(has(/^(hola|buen|hey|holi|ola)\b/)&&q.split(" ").length<=3) return agSay({t:"¡Hola! ¿Qué estás buscando hoy?",chips:AG_MAIN},400);
+  if(has(/gracias|genial|perfecto|buenisimo|listo|ok$/)) return agSay({t:"¡De nada! Si necesitás algo más, acá estoy.",chips:[["Ver modelos","buscar"],["Hablar con el equipo","wa"]]},400);
+  const m=agSearch(q);
+  if(has(/precio|cuest|valor|cuanto|sale/)) return agSay({t:m.length?"Te muestro los modelos. Si el precio dice «Consultar precio», el equipo te lo confirma por WhatsApp.":"Cada modelo muestra su precio cuando está cargado. Si dice «Consultar precio», el equipo te lo confirma por WhatsApp. ¿Qué modelo te interesa?",prods:m.length?m:undefined,wa:!m.length,chips:AG_AFTER},700);
+  if(m.length) return agSay({t:has(/stock|disponib|quedan|reposic|hay|tienen/)?"Estos son los que encontré. El stock y los talles disponibles te los confirma el equipo por WhatsApp o en las historias destacadas de <b>@torica_shoes</b>.":"Mirá lo que encontré para vos:",prods:m,chips:[["Ver toda la colección","go:"],["Hablar con el equipo","wa"],["Otra búsqueda","buscar"]]},800);
+  if(has(/stock|disponib|quedan|reposic|hay |tienen/)) return agSay({t:"El stock en vivo lo publicamos en las <b>historias destacadas de Instagram @torica_shoes</b>. Si me decís modelo y talle, el equipo te lo confirma por WhatsApp.",wa:true,chips:AG_AFTER});
+  return agSay({t:"No quiero inventarte datos. Puedo ayudarte a elegir modelos, talles o envíos, o pasarte con el equipo para que te respondan bien.",wa:true,chips:AG_MAIN});
+}
+function openAgent(ctx){
+  $("#agent").classList.add("on"); $("#agent").setAttribute("aria-hidden","false"); $("#agentBtn").setAttribute("aria-expanded","true");
+  $("#agentNudge").hidden=true; clearTimeout(nudgeT);
+  if(!agLog.length) agWelcome(); else agRender();
+  if(ctx==="nudge"){ const p=byId(window.__pdp); if(p) agUser(SHOES.includes(p.cat)?"¿Qué talle me conviene?":"¿Con qué lo combino?"); }
+  setTimeout(()=>{ if(innerWidth>900) $("#agIn").focus(); },350);
+}
+function closeAgent(){ $("#agent").classList.remove("on"); $("#agent").setAttribute("aria-hidden","true"); $("#agentBtn").setAttribute("aria-expanded","false"); }
+function agContext(parts){
+  clearTimeout(nudgeT); $("#agentNudge").hidden=true;
+  let seenNudge=false; try{ seenNudge=!!sessionStorage.getItem("torica_nudge"); }catch(e){}
+  if(parts[0]==="producto"&&!seenNudge&&!$("#agent").classList.contains("on")){
+    nudgeT=setTimeout(()=>{ const p=byId(window.__pdp); if(!p) return; const n=$("#agentNudge"); n.textContent=SHOES.includes(p.cat)?"¿Dudas con tu talle? Te ayudo.":"¿Querés ver con qué combinarlo? Te ayudo."; n.hidden=false; try{ sessionStorage.setItem("torica_nudge","1"); }catch(e){} },18000);
+  }
+}
+
 /* ---------- Eventos ---------- */
 document.addEventListener("click",e=>{
   const t = e.target.closest("[data-act]"); if(!t) return;
@@ -1068,6 +1240,9 @@ document.addEventListener("click",e=>{
     if(navigator.share) navigator.share({title:p.name+" · Torica",url}).catch(()=>{});
     else { try{ navigator.clipboard.writeText(url); toast("Link copiado"); }catch(err){ toast("Copiá el link de la barra"); } }
   }
+  if(act==="ag-open-nudge"){ openAgent("nudge"); }
+  if(act==="ag-close"){ closeAgent(); }
+  if(act==="ag-chip"){ agChip(t.dataset.k,t.textContent); }
   if(act==="inc"){ cart[+t.dataset.i].q++; saveCart(); renderCart(); }
   if(act==="dec"){ const i=+t.dataset.i; cart[i].q--; if(cart[i].q<=0) cart.splice(i,1); saveCart(); renderCart(); }
   if(act==="rm"){ cart.splice(+t.dataset.i,1); saveCart(); renderCart(); }
@@ -1093,7 +1268,9 @@ document.addEventListener("submit",e=>{
 $("#openCart").onclick=()=>openCart(true);
 $("#closeCart").onclick=()=>openCart(false);
 $("#overlay").onclick=()=>openCart(false);
-document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ openCart(false); openPanel("#qv",false); openPanel("#search",false); } });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ openCart(false); openPanel("#qv",false); openPanel("#search",false); closeAgent(); } });
+$("#agentBtn").onclick=()=>$("#agent").classList.contains("on")?closeAgent():openAgent();
+$("#agForm").addEventListener("submit",e=>{ e.preventDefault(); const i=$("#agIn"), v=i.value.trim(); if(!v) return; i.value=""; agUser(v); });
 $("#openSearch").onclick=()=>openPanel("#search",true);
 $("#sInput").addEventListener("input",e=>renderSearch(e.target.value));
 $("#toTop").onclick=()=>window.scrollTo({top:0,behavior:reduce?"auto":"smooth"});
