@@ -626,6 +626,75 @@ ul.spec{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
 .cart-open .agent-btn,.cart-open .wa-float,.cart-open .agent-nudge{opacity:0;pointer-events:none}
 .agent-btn,.wa-float{transition:opacity .25s,transform .25s,background .25s}
 #cartNote{font-size:12.5px;color:#6B4A40;line-height:1.4}
+
+/* ===== v10: hover de foto, ficha tecnica, modo catalogo ===== */
+.card .ph>a{display:block;width:100%;height:100%;position:relative}
+.card .ph img.alt{position:absolute;inset:0;opacity:0;transition:opacity .55s ease}
+@media (hover:hover){.card:hover .ph img.alt{opacity:1}}
+.tech{width:100%;max-width:520px;height:auto;display:block;margin:6px 0 0}
+.tk-g{stroke:var(--linea);stroke-width:2}
+.tk-sole{fill:var(--cacao)}.tk-plant{fill:var(--terracota)}
+.tk-up{fill:var(--chicle);stroke:var(--cacao);stroke-width:2.2;stroke-linejoin:round}
+.tk-strap{fill:none;stroke:var(--cacao);stroke-width:7;stroke-linecap:round}
+.tk-d{stroke:var(--terracota);stroke-width:1.6;fill:none}
+.tk-l{font:700 9.5px var(--sans);letter-spacing:2px;fill:var(--terracota)}
+.tk-v{font:400 21px var(--serif);fill:var(--cacao)}
+.tk-cap{margin:6px 0 0;font-size:12px;color:#6B4A40}
+.catmode{position:fixed;inset:0;z-index:120;background:var(--choco);overflow-y:auto;overscroll-behavior:contain;scroll-snap-type:y mandatory;visibility:hidden;opacity:0;outline:0;transition:opacity .35s,visibility 0s .35s}
+.catmode.on{visibility:visible;opacity:1;transition:opacity .35s}
+.cm-top{position:fixed;top:0;left:0;right:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px var(--pad);pointer-events:none}
+.cm-top>*{pointer-events:auto}
+.cm-chips{display:flex;gap:4px;background:rgba(255,248,243,.94);backdrop-filter:blur(12px);border-radius:999px;padding:5px;overflow-x:auto;max-width:calc(100% - 60px);scrollbar-width:none}
+.cm-chips::-webkit-scrollbar{display:none}
+.cm-chips button{border:0;background:transparent;border-radius:999px;padding:9px 16px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;color:var(--cacao)}
+.cm-chips button.on{background:var(--cacao);color:var(--crema)}
+.cm-x{background:rgba(255,248,243,.94);flex-shrink:0}
+.cm-nav{position:fixed;left:calc(var(--pad) + 128px);bottom:18px;z-index:3;display:flex;gap:8px}
+.cm-nav button{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--cacao);background:rgba(255,248,243,.94);cursor:pointer;font-size:18px;transition:background .2s,color .2s}
+.cm-nav button:hover{background:var(--cacao);color:var(--crema)}
+.cm-count{position:fixed;left:var(--pad);bottom:22px;z-index:3;background:rgba(255,248,243,.94);border-radius:999px;padding:9px 18px;font-size:11px;font-weight:700;letter-spacing:3px}
+.cm-prog{position:fixed;right:0;top:0;bottom:0;width:4px;background:var(--terracota);transform:scaleY(0);transform-origin:top;z-index:3}
+.cm-slide{height:100vh;height:100dvh;scroll-snap-align:start;position:relative;display:grid;grid-template-columns:5fr 7fr;overflow:hidden}
+.cm-slide.dark{background:var(--choco);color:var(--crema)}.cm-slide.pink{background:var(--chicle);color:var(--cacao)}
+.cm-text{padding:100px var(--pad) 70px;display:flex;flex-direction:column;justify-content:center;gap:18px;min-width:0}
+.cm-text>*{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.1,1),transform .8s cubic-bezier(.2,.7,.1,1)}
+.cm-slide.on .cm-text>*{opacity:1;transform:none}
+.cm-slide.on .cm-text>*:nth-child(2){transition-delay:.08s}.cm-slide.on .cm-text>*:nth-child(3){transition-delay:.16s}.cm-slide.on .cm-text>*:nth-child(4){transition-delay:.22s}.cm-slide.on .cm-text>*:nth-child(5){transition-delay:.3s}.cm-slide.on .cm-text>*:nth-child(6){transition-delay:.38s}
+.cm-idx{font-size:11px;letter-spacing:4px;font-weight:700}
+.cm-slide.dark .cm-idx{color:var(--chicle)}.cm-slide.pink .cm-idx{color:var(--terracota)}
+.cm-name{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(52px,6.4vw,112px);line-height:.92;margin:0}
+.cm-specs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;opacity:.92}
+.cm-cols{display:flex;gap:8px}.cm-cols i{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.5);display:block}
+.cm-slide.pink .cm-cols i{border-color:rgba(42,15,10,.4)}
+.cm-prices{display:flex;gap:34px;flex-wrap:wrap}
+.cm-prices div{display:flex;flex-direction:column;gap:2px}
+.cm-prices small{font-size:10px;letter-spacing:3px;font-weight:700;opacity:.8}
+.cm-prices b{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.6vw,54px);line-height:1}
+.cm-prices span{font-size:12px;opacity:.8}
+.cm-hint{font-size:12px;letter-spacing:3px;font-weight:700;text-transform:uppercase;opacity:.8;animation:cue2 2s ease-in-out infinite}
+@keyframes cue2{50%{transform:translateY(6px)}}
+.btn-ghost-cm{background:transparent;border-color:currentColor}
+.btn-ghost-cm:hover{background:currentColor}.btn-ghost-cm:hover{color:inherit}
+.cm-slide.dark .btn-ghost-cm:hover{background:var(--crema);color:var(--cacao)}.cm-slide.pink .btn-ghost-cm:hover{background:var(--cacao);color:var(--crema)}
+.cm-photos{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:12px;padding:12px 12px 12px 0;min-height:0}
+.cm-photos img{width:100%;height:100%;object-fit:cover;border-radius:12px;display:block;min-height:0;transform:scale(1.1);transition:transform 1.6s cubic-bezier(.2,.7,.1,1)}
+.cm-slide.on .cm-photos img{transform:scale(1)}
+.cm-photos{overflow:hidden}
+.cm-photos img{clip-path:inset(0 round 12px)}
+.cm-photos .big{grid-row:1/3}
+.p2 .sm{grid-row:1/3}
+.p1 .big{grid-column:1/3}
+@media (max-width:900px){
+  .cm-slide{grid-template-columns:1fr;grid-template-rows:46% 54%}
+  .cm-photos{order:-1;padding:0;gap:6px;grid-template-columns:2fr 1fr}
+  .cm-photos img{border-radius:0;clip-path:none}
+  .cm-text{padding:20px var(--pad) 84px;gap:10px;justify-content:flex-start}
+  .cm-name{font-size:clamp(40px,12vw,64px)}
+  .cm-specs{display:none}.cm-prices{gap:22px}.cm-prices b{font-size:30px}
+  .cm-nav{left:auto;right:18px;bottom:90px}.cm-count{bottom:18px}
+  .cm-slide .cm-text[style]{grid-column:auto!important}
+}
+@media (prefers-reduced-motion:reduce){.cm-text>*,.cm-photos img{opacity:1;transform:none;transition:none}.cm-hint{animation:none}}
 </style>
 </head>
 <body>
@@ -672,6 +741,7 @@ ul.spec{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
   <div class="ag-log" id="agLog" role="log" aria-live="polite"></div>
   <form class="ag-form" id="agForm"><input id="agIn" type="text" placeholder="Escribí tu consulta…" autocomplete="off" aria-label="Tu mensaje" maxlength="200"><button type="submit" aria-label="Enviar">→</button></form>
 </section>
+<section class="catmode" id="catmode" tabindex="-1" role="dialog" aria-label="Catálogo Torica 2026" aria-hidden="true"></section>
 <button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>
 <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a>
 <div class="sticky-buy" id="stickyBuy" hidden><div class="sp"><b id="sbName"></b><span id="sbPrice"></span></div><button class="btn btn-terra" id="sbAdd" data-act="add">Agregar</button></div>
@@ -1005,23 +1075,110 @@ function renderCart(){
   $("#checkout").href = wa("¡Hola Torica! Quiero hacer este pedido:\n"+lines+(priced?"\n\nTotal estimado: "+money(total):"")+(pairs?" ("+pairs+" pares)":""));
   $("#checkout").onclick = e => { if(!CONFIG.whatsapp){ e.preventDefault(); toast("Falta cargar el WhatsApp en CONFIG"); } };
 }
-function openCart(open){ if(open) closeAgent(); document.body.classList.toggle("cart-open",open);
+function openCart(open){ if(open){ closeAgent(); closeCatalog(); } document.body.classList.toggle("cart-open",open);
   $("#drawer").classList.toggle("on",open); $("#overlay").classList.toggle("on",open);
   $("#drawer").setAttribute("aria-hidden",String(!open));
 }
 let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("on"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("on"),2200); }
 
 /* ---------- Plantillas ---------- */
+/* ---------- Medidas (ficha técnica) ---------- */
+const numC=s=>parseFloat(String(s).replace(",","."));
+function measures(p){
+  const m={};
+  (p.specs||[]).forEach(s=>{
+    let r;
+    if(r=s.match(/^Caña(?: slouchy de| empeine)? (\d+(?:,\d+)?) cm$/i)) m.cana=numC(r[1]);
+    else if(r=s.match(/^(?:Altura de base|Base) (\d+(?:,\d+)?) cm$/i)) m.base=numC(r[1]);
+    else if(r=s.match(/^Taco base (\d+(?:,\d+)?) cm$/i)) m.taco=numC(r[1]);
+    else if(r=s.match(/^Suela más plantilla (\d+(?:,\d+)?) cm$/i)) m.suelaP=numC(r[1]);
+    else if(r=s.match(/^Suela (\d+(?:,\d+)?) cm$/i)) m.suela=numC(r[1]);
+    else if(r=s.match(/^Base talón (\d+(?:,\d+)?) cm$/i)) m.talon=numC(r[1]);
+    else if(r=s.match(/^Base adelante (\d+(?:,\d+)?) cm$/i)) m.frente=numC(r[1]);
+  });
+  return Object.keys(m).length?m:null;
+}
+PRODUCTS.forEach(p=>{ p.meas=measures(p); });
+const fmtC=v=>String(v).replace(".",",");
+function techSvg(p){
+  const m=p.meas; if(!m) return "";
+  const SB=9, SC=4.2;
+  const rear=m.taco??m.talon??m.base??m.suela??0, front=m.base??m.frente??m.suela??rear;
+  const plant=(m.suelaP&&m.suela)?m.suelaP-m.suela:0;
+  const rearPx=Math.min(rear*SB,100), frontPx=Math.min(front*SB,100), platPx=plant*SB, canaPx=(m.cana||0)*SC;
+  const H=Math.round(30+canaPx+Math.max(rearPx,frontPx)+platPx+(m.cana?48:70)+30), g=H-30, X0=130, X1=330;
+  const rearTop=g-rearPx-platPx, frontTop=g-frontPx-platPx;
+  const y=x=>rearTop+(frontTop-rearTop)*(x-X0)/(X1-X0);
+  const lab=(x,yy,t,v,a)=>`<text x="${x}" y="${yy}" text-anchor="${a}" class="tk-l">${t}</text><text x="${x}" y="${yy+19}" text-anchor="${a}" class="tk-v">${fmtC(v)} cm</text>`;
+  const dim=(x,y1,y2)=>`<path d="M${x} ${y1}V${y2}M${x-5} ${y1}h10M${x-5} ${y2}h10" class="tk-d"/>`;
+  let s=`<svg viewBox="-20 0 520 ${H}" class="tech" role="img" aria-label="Esquema de medidas de ${p.name}"><path d="M0 ${g}H480" class="tk-g"/>`;
+  s+=`<path d="M${X0} ${g}H${X1}V${g-frontPx}L${X0} ${g-rearPx}Z" class="tk-sole"/>`;
+  if(platPx) s+=`<path d="M${X0} ${g-rearPx}L${X1} ${g-frontPx}V${frontTop}L${X0} ${rearTop}Z" class="tk-plant"/>`;
+  if(m.cana){
+    const inst=Math.min(46,canaPx*.85);
+    s+=`<path d="M${X0} ${rearTop}V${rearTop-canaPx}H${X0+80}L${X0+88} ${rearTop-inst}Q${X1-40} ${rearTop-inst+4} ${X1} ${frontTop-10}V${frontTop}Z" class="tk-up"/>`;
+  } else {
+    [[X0+62,X0+118],[X0+134,X0+190]].forEach(([a,b])=>{ s+=`<path d="M${a} ${y(a)} Q${(a+b)/2} ${y((a+b)/2)-48} ${b} ${y(b)}" class="tk-strap"/>`; });
+    s+=`<path d="M${X0+14} ${y(X0+14)} q-8 -34 8 -54" class="tk-strap"/>`;
+  }
+  if(m.cana) s+=dim(66,rearTop,rearTop-canaPx)+lab(54,rearTop-canaPx/2-12,p.cat==="zueco"?"EMPEINE":"CAÑA",m.cana,"end");
+  if(rear){ const rl=m.taco?"TACO":m.talon?"TALÓN":m.base?"BASE":"SUELA"; s+=dim(112,g,g-rearPx)+lab(100,g-rearPx/2-12,rl,rear,"end"); }
+  if(front!==rear) s+=dim(X1+26,g,g-frontPx)+lab(X1+38,g-frontPx/2-12,m.frente?"FRENTE":"BASE",front,"start");
+  if(plant) s+=dim(X1+26,g,frontTop)+lab(X1+38,g-(frontPx+platPx)/2-12,"CON PLANTILLA",m.suelaP,"start");
+  return s+`</svg><p class="tk-cap">Esquema ilustrativo. Medidas según catálogo.</p>`;
+}
+/* ---------- Modo catálogo ---------- */
+let cmBuilt=false;
+function buildCatalog(){
+  const el=$("#catmode"), N=PRODUCTS.length;
+  const dots=p=>p.colors.map(c=>`<i style="background:${COLOR[c[0]].h}" title="${COLOR[c[0]].n}"></i>`).join("");
+  let h=`<div class="cm-top"><div class="cm-chips" role="group" aria-label="Ir a una categoría"><button class="on" data-act="cm-jump" data-v="">Portada</button>${Object.keys(CAT_LABEL).map(k=>`<button data-act="cm-jump" data-v="${k}">${CAT_LABEL[k]}</button>`).join("")}</div><button class="icon-btn cm-x" data-act="cat-close" aria-label="Salir del catálogo"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+  <div class="cm-nav"><button data-act="cm-step" data-v="-1" aria-label="Anterior">↑</button><button data-act="cm-step" data-v="1" aria-label="Siguiente">↓</button></div>
+  <div class="cm-count" id="cmCount">PORTADA</div><div class="cm-prog" id="cmProg"></div>
+  <article class="cm-slide dark p3" data-n="0" data-cat=""><div class="cm-text"><div class="cm-idx">NUEVA COLECCIÓN</div><h2 class="cm-name" style="font-size:clamp(64px,9vw,150px)">Torica<br>2026</h2><ul class="cm-specs"><li>${N} modelos</li><li>Talles ${CONFIG.talles[0]} al ${CONFIG.talles[CONFIG.talles.length-1]}</li></ul><div class="cm-prices"><div><small>CURVA</small><b>8 pares</b></div><div><small>SURTIDO</small><b>sin mínimo</b></div></div><div class="cm-hint">Deslizá hacia abajo ↓</div></div><div class="cm-photos"><img class="big" src="${IMG.w_cover}" alt="Colección Torica 2026"><img class="sm" src="${IMG.w_b}" alt=""><img class="sm" src="${IMG.w_c}" alt=""></div></article>`;
+  PRODUCTS.forEach((p,i)=>{
+    const tone=i%2?"pink":"dark", ph=(p.photos||[]).slice(0,3), n=i+1;
+    h+=`<article class="cm-slide ${tone} p${ph.length}" data-n="${n}" data-cat="${p.cat}"><div class="cm-text">
+      <div class="cm-idx">${String(n).padStart(2,"0")} / ${N} · ${CAT_TAG[p.cat]}</div>
+      <h2 class="cm-name">${p.name}</h2>
+      <ul class="cm-specs">${(p.specs||[]).slice(0,4).map(s=>`<li>${s}</li>`).join("")}</ul>
+      <div class="cm-cols">${dots(p)}</div>
+      <div class="cm-prices"><div><small>CURVA · 8 PARES</small><b>${money(p.curva)}</b><span>c/u</span></div><div><small>SURTIDO</small><b>${money(p.surtido)}</b><span>c/u</span></div></div>
+      <div class="row" style="gap:10px"><button class="btn ${tone==="dark"?"btn-chicle":"btn-cacao"}" data-act="qv" data-id="${p.id}">Armar pedido</button><a class="btn btn-ghost-cm" href="#/producto/${p.id}" data-act="cat-close">Ver ficha</a></div></div>
+      <div class="cm-photos">${ph.map((k,j)=>`<img class="${j?"sm":"big"}" src="${IMG[k]}" alt="${j?"":p.name}">`).join("")}</div></article>`;
+  });
+  h+=`<article class="cm-slide pink p1" data-n="${N+1}" data-cat="" style="grid-template-rows:1fr"><div class="cm-text" style="grid-column:1/-1;align-items:center;text-align:center"><div class="cm-idx">LOS PEDIDOS SE TOMAN POR WHATSAPP</div><h2 class="cm-name" style="font-size:clamp(48px,7vw,110px)">Hacé tu pedido<br>mayorista.</h2><div class="row" style="gap:12px;justify-content:center"><a class="btn btn-cacao" target="_blank" rel="noopener" href="${wa("¡Hola Torica! Quiero hacer un pedido mayorista.")}">Pedir por WhatsApp</a><a class="btn btn-ghost-cm" href="#/mayorista" data-act="cat-close">Ver condiciones</a></div></div></article>`;
+  el.innerHTML=h;
+  const io2=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; const s=e.target; s.classList.add("on");
+    const n=+s.dataset.n; $("#cmCount").textContent=n===0?"PORTADA":n>N?"PEDIDO":String(n).padStart(2,"0")+" / "+N;
+    const cat=s.dataset.cat; $$(".cm-chips button",el).forEach(b=>b.classList.toggle("on",b.dataset.v===cat));
+  }),{root:el,threshold:.55});
+  $$(".cm-slide",el).forEach(s=>io2.observe(s));
+  el.addEventListener("scroll",()=>{ $("#cmProg").style.transform=`scaleY(${(el.scrollTop/((el.scrollHeight-el.clientHeight)||1)).toFixed(4)})`; },{passive:true});
+  cmBuilt=true;
+}
+function openCatalog(cat){
+  if(!cmBuilt) buildCatalog();
+  const el=$("#catmode"); el.classList.add("on"); el.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden";
+  const t=cat&&el.querySelector(`.cm-slide[data-cat="${cat}"]`); el.scrollTo({top:t?t.offsetTop:0});
+  setTimeout(()=>el.focus({preventScroll:true}),50);
+}
+function closeCatalog(){
+  const el=$("#catmode"); if(!el||!el.classList.contains("on")) return;
+  el.classList.remove("on"); el.setAttribute("aria-hidden","true"); document.body.style.overflow="";
+}
+
 const pr = p => p.curva ? `Desde ${money(p.curva)}` : money(p.price);
 function card(p){
   const k=p.colors[0][1], shoe=SHOES.includes(p.cat);
   return `<article class="card reveal">
-    <div class="ph"><a href="#/producto/${p.id}" aria-label="Ver ${p.name}"><img src="${IMG[k]}" alt="${p.name}" loading="lazy"></a>
+    <div class="ph"><a href="#/producto/${p.id}" aria-label="Ver ${p.name}"><img src="${IMG[k]}" alt="${p.name}" loading="lazy">${p.photos&&p.photos[1]?`<img class="alt" src="${IMG[p.photos[1]]}" alt="" loading="lazy">`:""}</a>
     ${p.badge?`<span class="tagb">${p.badge}</span>`:""}
     <button class="fav" data-act="fav" data-id="${p.id}" aria-pressed="${isFav(p.id)}" aria-label="Guardar ${p.name} en favoritos">${HEART_SVG}</button>
     ${shoe?`<button class="quick" data-act="qv" data-id="${p.id}">ARMAR PEDIDO</button>`:`<button class="quick" data-act="quick" data-id="${p.id}">AGREGAR</button>`}</div>
     <a href="#/producto/${p.id}" style="display:flex;flex-direction:column;gap:4px">
       <span class="cat-l">${CAT_TAG[p.cat]}</span><span class="nm">${p.name}</span>
+      ${p.meas&&p.meas.cana?`<span class="pr" style="font-size:11px;letter-spacing:2px;text-transform:uppercase">${p.cat==="zueco"?"Empeine":"Caña"} ${fmtC(p.meas.cana)} cm</span>`:""}
       ${p.curva?`<span class="pr"><b style="font-weight:700;color:var(--cacao)">${money(p.curva)}</b> c/u en curva</span><span class="pr" style="font-size:13px">${money(p.surtido)} surtido</span>`:`<span class="pr">${money(p.price)}</span>`}
       ${p.colors.length>1?`<span class="dots">${p.colors.map(c=>`<i style="background:${COLOR[c[0]].h}"></i>`).join("")}</span>`:""}
     </a></article>`;
@@ -1055,7 +1212,7 @@ function viewHome(){
     <div class="sec-head" style="padding-right:var(--pad)"><div><span class="eyebrow">Temporada 2026</span><h2 class="h-lg">Lo nuevo de Torica</h2></div>
       <div class="arrows"><button class="arrow" data-act="car-prev" aria-label="Anterior">←</button><button class="arrow" data-act="car-next" aria-label="Siguiente">→</button></div></div>
     <div class="carousel" id="car">${nuevo.map(card).join("")}</div>
-    <div style="padding-right:var(--pad);margin-top:44px"><a class="link-u" href="#/coleccion">Ver todo</a></div>
+    <div style="padding-right:var(--pad);margin-top:44px;display:flex;gap:28px;flex-wrap:wrap"><a class="link-u" href="#/coleccion">Ver todo</a><button class="link-u" data-act="cat-open">Ver como catálogo</button></div>
   </section>
   <section class="mayor"><div class="eyebrow" style="color:var(--chicle)">Vendé Torica en tu negocio</div><h2 class="h-lg" style="color:var(--crema)">Hacé tu pedido mayorista.</h2>
     <div class="mayor-grid"><div class="mcard reveal"><b>Mayorista general</b><big>Curva de 8 pares</big><p>Mismo artículo y color, con talles ya asignados.</p></div><div class="mcard reveal alt"><b>Surtido</b><big>Sin mínimo</big><p>Elegí cualquier modelo, talle y color.</p></div></div>
@@ -1105,8 +1262,10 @@ function viewColeccion(q){
   const cat = q.get("cat")||"";
   const sort = q.get("orden")||"nuevo";
   let list = PRODUCTS.filter(p=>!cat||p.cat===cat);
+  const hSel=q.get("h")||"";
   const colAvail=[...new Set(list.flatMap(p=>p.colors.map(c=>c[0])))], colSel=q.get("color")||"";
   if(colSel) list=list.filter(p=>p.colors.some(c=>c[0]===colSel));
+  if(hSel) list=list.filter(p=>p.cat!=="zueco"&&p.meas&&p.meas.cana&&(hSel==="c"?p.meas.cana<=15:hSel==="m"?p.meas.cana>=16&&p.meas.cana<=24:p.meas.cana>=25));
   if(sort==="nuevo") list=[...list].sort((a,b)=>NEW_IDS.indexOf(a.id)===-1?1:NEW_IDS.indexOf(b.id)===-1?-1:NEW_IDS.indexOf(a.id)-NEW_IDS.indexOf(b.id));
   if(sort==="menor") list=[...list].sort((a,b)=>(a.price??0)-(b.price??0));
   if(sort==="mayor") list=[...list].sort((a,b)=>(b.price??0)-(a.price??0));
@@ -1117,6 +1276,7 @@ function viewColeccion(q){
     <h1 class="h-xl">${cat?CAT_LABEL[cat]:"Todo Torica"}</h1>
     <p style="font-size:19px;max-width:560px;margin:0">Elegí caminar con estilo, comodidad y confianza.</p>
     <div class="wpills"><span>Curva de 8 pares</span><span>Surtido sin mínimo</span><span>Pedidos por WhatsApp</span></div>
+    <button class="btn btn-cacao" data-act="cat-open" style="align-self:flex-start;margin-top:8px">Ver como catálogo</button>
   </section>
   <div class="toolbar">
     <div class="chips" role="group" aria-label="Filtrar por categoría">${chip("","Todo")}${Object.keys(CAT_LABEL).map(k=>chip(k,CAT_LABEL[k])).join("")}</div>
@@ -1128,6 +1288,7 @@ function viewColeccion(q){
       </select></div>
   </div>
   <div class="colorbar" role="group" aria-label="Filtrar por color"><span>COLOR</span>${colAvail.map(k=>`<button class="cdot" data-act="color-f" data-v="${k}" aria-pressed="${colSel===k}"><i style="background:${COLOR[k].h}"></i>${COLOR[k].n}</button>`).join("")}</div>
+  <div class="colorbar" role="group" aria-label="Filtrar por altura de caña"><span>ALTURA DE CAÑA</span>${[["c","Corta · hasta 15 cm"],["m","Media · 16 a 24 cm"],["a","Alta · desde 25 cm"]].map(([k,l])=>`<button class="cdot" data-act="h-f" data-v="${k}" aria-pressed="${hSel===k}">${l}</button>`).join("")}<small style="color:#6B4A40">Solo modelos con medida en el catálogo</small></div>
   <section class="section" style="padding-top:56px">${list.length?`<div class="grid">${list.map(card).join("")}</div>`:`<div class="empty-state"><div class="it">Todavía no hay<br>de ese color.</div><a class="btn btn-terra" href="#/coleccion${cat?"?cat="+cat:""}">Ver todo</a></div>`}</section>
   <div class="banner-girls"><div class="stack" style="gap:10px;flex:1 1 360px"><div class="eyebrow" style="color:var(--terracota)">TORICA GIRLS</div><div class="it" style="font-size:clamp(40px,5vw,72px);line-height:.95">Elegí primero.<br>Votá lo que sale.</div></div><a class="btn btn-cacao" href="#/girls">Quiero sumarme</a></div>`;
 }
@@ -1178,6 +1339,7 @@ function viewProducto(id){
       <a class="btn btn-line" id="waAsk" href="#" target="_blank" rel="noopener">Consultar por WhatsApp</a>
       <div class="pdp-tools"><button class="link-u pfav" data-act="fav" data-id="${p.id}" aria-pressed="${isFav(p.id)}"><span class="ft"></span></button><button class="link-u" data-act="share">Compartir</button></div>
       <div>
+        ${p.meas?`<details class="acc" open><summary>Ficha técnica</summary><div>${techSvg(p)}</div></details>`:""}
         <details class="acc" open><summary>El producto</summary><div>${p.specs&&p.specs.length?`<ul class="spec">${p.specs.map(s=>`<li>${s}</li>`).join("")}</ul>`:"Consultanos por WhatsApp los detalles de este modelo."}</div></details>
         <details class="acc"><summary>Tabla de talles</summary><div><table class="ttable"><tr><th>Talle</th>${CONFIG.talles.map(t=>`<td>${t}</td>`).join("")}</tr><tr><th>Medida</th>${CONFIG.talles.map(t=>`<td>${TALLE_CM[t]} cm</td>`).join("")}</tr></table></div></details>
         <details class="acc"><summary>Envíos</summary><div>${CONFIG.info.envios}</div></details>
@@ -1573,6 +1735,11 @@ document.addEventListener("click",e=>{
   if(act==="ag-close"){ closeAgent(); }
   if(act==="ag-chip"){ agChip(t.dataset.k,t.textContent); }
   if(act==="hot"){ const w=t.parentElement, o=!w.classList.contains("open"); $$(".hot.open").forEach(x=>{ x.classList.remove("open"); x.querySelector(".hot-b").setAttribute("aria-expanded","false"); }); w.classList.toggle("open",o); t.setAttribute("aria-expanded",String(o)); }
+  if(act==="cat-open"){ openCatalog(t.dataset.v||""); }
+  if(act==="cat-close"){ closeCatalog(); }
+  if(act==="cm-jump"){ const el=$("#catmode"), s=el.querySelector(t.dataset.v?`.cm-slide[data-cat="${t.dataset.v}"]`:".cm-slide"); if(s) el.scrollTo({top:s.offsetTop,behavior:reduce?"auto":"smooth"}); }
+  if(act==="cm-step"){ const el=$("#catmode"); el.scrollBy({top:+t.dataset.v*el.clientHeight,behavior:reduce?"auto":"smooth"}); }
+  if(act==="h-f"){ const q=new URLSearchParams((location.hash.split("?")[1])||""); q.get("h")===t.dataset.v?q.delete("h"):q.set("h",t.dataset.v); location.hash="#/coleccion?"+q.toString(); }
   if(act==="inc"){ cart[+t.dataset.i].q++; saveCart(); renderCart(); }
   if(act==="dec"){ const i=+t.dataset.i; cart[i].q--; if(cart[i].q<=0) cart.splice(i,1); saveCart(); renderCart(); }
   if(act==="rm"){ cart.splice(+t.dataset.i,1); saveCart(); renderCart(); }
@@ -1599,7 +1766,12 @@ document.addEventListener("submit",e=>{
 $("#openCart").onclick=()=>openCart(true);
 $("#closeCart").onclick=()=>openCart(false);
 $("#overlay").onclick=()=>openCart(false);
-document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ openCart(false); openPanel("#qv",false); openPanel("#search",false); closeAgent(); } });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ openCart(false); openPanel("#qv",false); openPanel("#search",false); closeAgent(); closeCatalog(); }
+  const cm=$("#catmode");
+  if(cm&&cm.classList.contains("on")&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){
+    if(["ArrowDown","PageDown"," "].includes(e.key)){ e.preventDefault(); cm.scrollBy({top:cm.clientHeight,behavior:reduce?"auto":"smooth"}); }
+    if(["ArrowUp","PageUp"].includes(e.key)){ e.preventDefault(); cm.scrollBy({top:-cm.clientHeight,behavior:reduce?"auto":"smooth"}); }
+  } });
 $("#agentBtn").onclick=()=>$("#agent").classList.contains("on")?closeAgent():openAgent();
 $("#agForm").addEventListener("submit",e=>{ e.preventDefault(); const i=$("#agIn"), v=i.value.trim(); if(!v) return; i.value=""; agUser(v); });
 $("#openSearch").onclick=()=>openPanel("#search",true);
